@@ -13,7 +13,10 @@ const _INITIAL_STATE_={
 const Form=()=>{   
     
     const [state,setState]=useState(_INITIAL_STATE_)
-    const isAlert = useSelector(isContact(state))
+
+    const appendObj = (obj) => (reduxState) => isContact()(reduxState, obj)
+
+    const isAlert = useSelector(appendObj(state))
     const dispatch = useDispatch()
 
     const handleChange=({target:{name,value}})=>{

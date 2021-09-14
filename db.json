@@ -1,3 +1,9 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "id": "6935ee30-be93-4b4e-ba2f-069034906ec8",
+      "name": "ertgwer",
+      "number": "+23(453)-45-34"
+    }
+  ]
 }
