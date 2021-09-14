@@ -8,8 +8,7 @@ export const isLoading = ({loading})=>loading
 const getContacts = ({contacts})=>contacts
 
 export const getFContacts = createSelector(
-	getContacts,
-	getFilter,
+	[getContacts,getFilter],
 	(contacts, filter) => contacts.filter(i=>i.name.toLowerCase().startsWith(filter.split(" ").join("").toLowerCase()))
 )
 
