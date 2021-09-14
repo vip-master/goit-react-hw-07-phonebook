@@ -21,17 +21,3 @@ export const isContact = () => createSelector(
 		i.number===number || i.name.toLowerCase()===name.toLowerCase()
 	)
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-

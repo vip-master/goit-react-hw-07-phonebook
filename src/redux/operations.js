@@ -4,7 +4,12 @@ import { loadContacts, addContact as add, delContact as del, loader } from "./ac
 
 
 export const error = (err) => () => {
-	alert(err)
+
+	if(err.isError){
+		console.log(err)
+		err.status ? alert(`${err.statusText}. Code: ${err.status}`)
+			: alert("Server down...")
+	} else if(typeof err === "string") alert(err)
 }
 
 export const load = () => async (dispatch) => {
@@ -16,7 +21,7 @@ export const load = () => async (dispatch) => {
 		dispatch(loadContacts(request.data || []))
 	} 
 	else {
-		dispatch(error(request.statusText+". Code:"+request.status))
+		dispatch(error(request))
 	}
 	dispatch(loader(false))
 }
@@ -31,7 +36,7 @@ export const addContact = (contact) => async (dispatch) => {
 		dispatch(add(contact))
 	} 
 	else {
-		dispatch(error(request.statusText+". Code:"+request.status))
+		dispatch(error(request))
 	}
 	dispatch(loader(false))	
 }
@@ -45,7 +50,7 @@ export const delContact = (id) => async (dispatch) => {
 		dispatch(del(id))
 	} 
 	else {
-		dispatch(error(request.statusText+". Code:"+request.status))
+		dispatch(error(request))
 	}
 	dispatch(loader(false))		
 }
