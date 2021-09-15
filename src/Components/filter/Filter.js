@@ -5,7 +5,7 @@ import { filter } from '../../redux/actions'
 
 function Filter() {
 
-	const { filter:value } = useSelector(getFilter)
+	const value = useSelector(getFilter)
 
 	const dispatch = useDispatch()
 
